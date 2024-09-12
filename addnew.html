@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Employee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="inner-header">
+            <a>Add New</a>
+            <div class="pull-right flex rightAccount">
+                <a href="{{ url_for('demo') }}">
+                    <button onclick="back()"class="btn btn-default pull-right">Back</button>
+                </a><script>
+                    function back() {
+                        window.history.forward();
+                    }
+                
+                    setTimeout("back()", 0);
+                    window.onunload = function() {
+                        null
+                    };
+                </script>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="content2">
+        <div class="well well-sm center">
+            <h4>Add New Employee</h4>
+            <hr>
+            <form action="{{ url_for('submit') }}" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact</label>
+                    <input type="tel" name="contact" class="form-control" id="contact" required>
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-success">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="inner-header">
+            <a>Employee List</a>
+            <div class="pull-right flex rightAccount">
+                <a href="{{ url_for('addnew') }}">
+                    <button class="btn btn-default pull-right">Add New Employee</button>
+                </a>
+                <a href="{{url_for('login')}}"><button class="btn btn-default pull-right" onclick="signout()"style="border-radius: 0;text-align-last: right;">Sign Out</button></a>
+                <script>
+                    function signout() {
+                        window.history.forward();
+                    }
+                
+                    setTimeout("signout()", 0);
+                    window.onunload = function() {
+                        null
+                    };
+                </script>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="content2">
+        <h1>{{ message }}</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
